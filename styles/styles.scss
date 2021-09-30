@@ -1,0 +1,32 @@
+@use 'reset';
+@use 'header';
+@use 'login';
+@use 'create-user';
+@use 'side-nav';
+@use 'featured-media';
+@use 'foryou-list';
+@use 'just-added';
+@use 'poster-view';
+@use 'collections';
+@use 'cast-info';
+@use 'account';
+@use 'search';
+
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-layout {
+  background: linear-gradient(135deg, rgb(31, 31, 44) 65%, rgba(19,50,150,2) 100%);
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

@@ -1,0 +1,45 @@
+.top-header {
+  background: rgba(0,0,0,0);
+  color: white; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  transition: background .3s ease-in-out;
+  &:hover {
+    background: rgba(0,0,0,1);
+  }
+  &__logo {
+    background-size: 100% 100%;
+    width: 129px;
+    height: 22px;
+    background-image: url(/images/logo.svg);
+    transform: scale(.9);
+  }
+  &__left-side {
+    display: flex;
+    div:nth-child(1){
+      margin-right: 40px;
+    }
+  }
+
+  &__acount {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+
+  &__user-img {
+    height: 30px;
+    width: 30px;
+    border: 3px solid rgb(132, 0, 255);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
