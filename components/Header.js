@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import Account from "./Account";
-import Search from "./Search";
-
+import Search from './Search';
 
 const Header = (props) => {
   return (
@@ -15,15 +15,15 @@ const Header = (props) => {
       </div>
       <div className='top-header__logo' />
       <div className='top-header__account'>
-        <img
+        <Image
           className='top-header__user-img'
           src='https://uifaces.co/our-content/donated/gPZwCbdS.jpg'
+          alt=''
         />
         <div className='top-header__user-name'>Bryant</div>
       </div>
-      <Account/>
-      <Search/>
-      
+      <Account />
+      <Search />
     </header>
   );
 };

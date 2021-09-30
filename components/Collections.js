@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const Collections = (props) => {
   const loopComponent = (comp, digit) => {
     const thumbnails = [];
@@ -22,7 +24,10 @@ const Collections = (props) => {
         </div>
         {loopComponent(
           <div className='collections__thumbnail'>
-            <img src='https://image.tmdb.org/t/p/original/pZ4hR5IIoHHfNjot9rq4F96OGAi.jpg' />
+            <Image
+              src='https://image.tmdb.org/t/p/original/pZ4hR5IIoHHfNjot9rq4F96OGAi.jpg'
+              alt=''
+            />
             <div className='collections__top-layer'>
               <i className='fas fa-play' />
             </div>

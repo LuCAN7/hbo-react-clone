@@ -6,7 +6,6 @@ const Layout = (props) => {
     <div className='main-layout'>
       <Header />
       <SideNav />
-
       <section className='contain-container'>{props.children}</section>
     </div>
   );

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const ForYouList = (props) => {
   const loopComp = (comp, digit) => {
     let thumbnail = [];
@@ -14,7 +16,7 @@ const ForYouList = (props) => {
       <div className='foryou-list__thumbnails'>
         {loopComp(
           <div className='foryou-list__thumbnail'>
-            <img src='https://cdn.blocktoro.com/wp-content/uploads/2020/05/Rick-and-Morty-Season-5-Release-Date-and-Trailer-scaled.jpg' />
+            <Image src='https://cdn.blocktoro.com/wp-content/uploads/2020/05/Rick-and-Morty-Season-5-Release-Date-and-Trailer-scaled.jpg' alt=""/>
             <div className='foryou-list__top-layer'>
               <i className='fas fa-play' />
             </div>
