@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Main() {
   return (
@@ -13,7 +13,7 @@ export default function Main() {
 
         <div className="login-user__form">
           <div className="login-user__user-box">
-            <Image className="login-user__user-Image" src="https://uifaces.co/our-content/donated/gPZwCbdS.jpg" alt=""/>
+            <img className="login-user__user-Image" src="https://uifaces.co/our-content/donated/gPZwCbdS.jpg" alt=""/>
             {/* Why not use a span if its only text like - .login-user__title */}
             <div className="login-user__user-name">Bryant</div>
           </div>

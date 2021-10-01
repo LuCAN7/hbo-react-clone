@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import Account from "./Account";
+// import Image from 'next/image';
+import Account from './Account';
 import Search from './Search';
 
 const Header = (props) => {
@@ -15,7 +15,7 @@ const Header = (props) => {
       </div>
       <div className='top-header__logo' />
       <div className='top-header__account'>
-        <Image
+        <img
           className='top-header__user-img'
           src='https://uifaces.co/our-content/donated/gPZwCbdS.jpg'
           alt=''

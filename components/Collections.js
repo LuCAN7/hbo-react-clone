@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const Collections = (props) => {
   const loopComponent = (comp, digit) => {
@@ -24,7 +24,7 @@ const Collections = (props) => {
         </div>
         {loopComponent(
           <div className='collections__thumbnail'>
-            <Image
+            <img
               src='https://image.tmdb.org/t/p/original/pZ4hR5IIoHHfNjot9rq4F96OGAi.jpg'
               alt=''
             />

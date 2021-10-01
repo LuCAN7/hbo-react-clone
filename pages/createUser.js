@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function CreateUser() {
   return (
@@ -13,7 +13,7 @@ export default function CreateUser() {
 
         <div className="create-user__form">
         
-            <Image className="create-user__user-img" src="https://uifaces.co/our-content/donated/gPZwCbdS.jpg" alt="user profile image"/>
+            <img className="create-user__user-img" src="https://uifaces.co/our-content/donated/gPZwCbdS.jpg" alt="user profile image"/>
             {/* Why not use a span if its only text like - .create-user__title */}
             <div className="create-user__input-group">
               <label>Name</label>

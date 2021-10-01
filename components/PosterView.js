@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const PosterView = (props) => {
   const loopComponent = (comp, digit) => {
@@ -14,7 +14,7 @@ const PosterView = (props) => {
       <div className='poster-view__thumbnails'>
         {loopComponent(
           <div className='poster-view__thumbnail'>
-            <Image
+            <img
               src='https://image.tmdb.org/t/p/original/dHXp4cGOQtDrrdVPiffnXSjqkNQ.jpg'
               alt=''
             />

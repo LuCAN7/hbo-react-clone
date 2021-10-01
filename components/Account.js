@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 
 const Account = (props) => {
@@ -17,7 +17,7 @@ const Account = (props) => {
         <div className='account__watch-list'>
           {loopComponent(
             <div className='account__watch-video'>
-              <Image
+              <img
                 src='https://image.tmdb.org/t/p/original/pZ4hR5IIoHHfNjot9rq4F96OGAi.jpg'
                 alt='movie cover image'
               />
