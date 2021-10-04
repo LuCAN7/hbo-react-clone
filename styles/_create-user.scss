@@ -44,8 +44,10 @@
     margin-right: 3rem;;
     border: 3px solid rgb(132, 0, 255);
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
+    // background-image: url(/images/no-user-image.png);
+    // background-size: contain;
 
   }
   &__input-group {
