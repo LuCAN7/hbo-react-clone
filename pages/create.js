@@ -1,9 +1,17 @@
 // import Image from "next/image";
 import { useStateContext } from '../components/HBOProvider';
+import ls from 'local-storage';
+import {v4} from 'uuid';
 
 export default function CreateUser() {
   const globalState = useStateContext();
   console.log(globalState.user);
+
+  const saveUser = ()=> {
+    let users = [],
+    return users;
+  }
+  
   
   return (
     <div className='conatiner'>
