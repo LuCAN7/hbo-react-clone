@@ -39,7 +39,6 @@ const AuthCheck = (component) =>{
     )
   }
 
-  // return component;
 }
 
 export default AuthCheck;

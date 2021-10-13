@@ -20,7 +20,8 @@ const Header = (props) => {
         }>
           <i className='fas fa-bars' />
         </div>
-        <div className='top-header__search-btn'>
+        <div className='top-header__search-btn'
+        onClick={()=>globalState.setSearchOpen(true)}>
           <i className='fas fa-search' />
         </div>
       </div>
@@ -35,6 +36,7 @@ const Header = (props) => {
         <div className='top-header__user-name'>{globalState.user}</div>
       </div>
       <Account />
+      {/* {globalState.searchOpen ? <Search />: ''} */}
       <Search />
     </header>
   );

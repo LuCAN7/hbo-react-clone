@@ -1,6 +1,9 @@
 // import Image from 'next/image';
+import { useStateContext } from "./HBOProvider";
 
 const Search = (props) => {
+  const globalState = useStateContext();
+
   const loopComponent = (comp, digit) => {
     const thumbnails = [];
     for (let i = 0; i < digit; i++) {
@@ -9,7 +12,7 @@ const Search = (props) => {
     return thumbnails;
   };
   return (
-    <div className='search'>
+    <div className={`search ${globalState.searchOpen ? 'search--active':''}`}>
       <div className='search__input-group'>
         <input
           className='search__input'
@@ -19,7 +22,8 @@ const Search = (props) => {
           // Temp fix for error in console....will fix after adding functionality
           readOnly
         />
-        <div className='search__close-btn'>
+        <div className='search__close-btn'
+        onClick={()=>globalState.setSearchOpen(false)}>
           <i className='fas fa-times' />
         </div>
       </div>
