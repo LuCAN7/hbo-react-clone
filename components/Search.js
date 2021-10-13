@@ -16,6 +16,8 @@ const Search = (props) => {
           type='text'
           placeholder='Search for a title'
           value=''
+          // Temp fix for error in console....will fix after adding functionality
+          readOnly
         />
         <div className='search__close-btn'>
           <i className='fas fa-times' />

@@ -11,6 +11,10 @@
   width: 100%;
   z-index: 10;
   transition: background .3s ease-in-out;
+  &--menu-open{
+    background-color: black;
+  }
+
   &:hover {
     background: rgba(0,0,0,1);
   }
@@ -32,6 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center; 
+    cursor: pointer;
   }
 
   &__user-img {

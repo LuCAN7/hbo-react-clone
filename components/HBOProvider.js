@@ -15,12 +15,19 @@ export const HBOProvider = (props) => {
     setUser(e.target.value);
   };
 
+  const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [accountNavOpen, setAccountNavOpen] = useState(false);
+
   return (
     <stateContext.Provider
       value={{
         defaultImage,
         user,
         handleCreateUser,
+        sideNavOpen,
+        setSideNavOpen,
+        accountNavOpen,
+        setAccountNavOpen,
       }}
     >
       {props.children}

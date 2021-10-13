@@ -1,18 +1,40 @@
 // import Image from "next/image";
 import { useStateContext } from '../components/HBOProvider';
 import ls from 'local-storage';
-import {v4} from 'uuid';
+import { v4 } from 'uuid';
+import { useRouter } from 'next/dist/client/router';
 
 export default function CreateUser() {
   const globalState = useStateContext();
+  const router = useRouter();
   console.log(globalState.user);
 
-  const saveUser = ()=> {
-    let users = [],
-    return users;
-  }
-  
-  
+  const saveUser = () => {
+    let users = [];
+    let user;
+
+    if (ls('users') < 1) {
+      user = {
+        id: v4(),
+        user: globalState.user,
+        myListID: [],
+      };
+      users.push(user);
+      ls('users', users);
+      router.push('/login');
+    } else {
+      users = ls('users');
+      user = {
+        id: v4(),
+        user: globalState.user,
+        myListID: [],
+      };
+      users.push(user);
+      ls('users', users);
+      router.push('/login');
+    }
+  };
+
   return (
     <div className='conatiner'>
       <div className='create-user'>
@@ -81,7 +103,9 @@ export default function CreateUser() {
           </div>
         </div>
         <div className='create-user__btns'>
-          <button className='create-user__btns--save'>Save</button>
+          <button className='create-user__btns--save' onClick={saveUser}>
+            Save
+          </button>
           <button className='create-user__btns--cancel'>Cancel</button>
         </div>
       </div>

@@ -1,7 +1,10 @@
 // import Image from 'next/image';
 import Link from 'next/link';
+import { useStateContext } from './HBOProvider';
+
 
 const Account = (props) => {
+  const globalState = useStateContext();
   const loopComponent = (comp, loops) => {
     const mylistViewed = [];
     for (let i = 0; i < loops; i++) {
@@ -11,7 +14,7 @@ const Account = (props) => {
   };
 
   return (
-    <div className='account'>
+    <div className={`account ${globalState.accountNavOpen ? 'account--active' : ''}`}>
       <div className='account__details'>
         <div className='account__title'>My List</div>
         <div className='account__watch-list'>
@@ -32,7 +35,7 @@ const Account = (props) => {
                 </div>
               </div>
             </div>,
-            6
+            6 // The amount of viewed components passed in as an argument
           )}
         </div>
       </div>
