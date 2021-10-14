@@ -39,7 +39,7 @@ const MediaRow = (props) => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/${props.endpoint}&api_key=25924de1a04055bc5b346171037ca912`
+        `https://api.themoviedb.org/3/${props.endpoint}&api_key=${process.env.TMDB_API_KEY}`
       )
       .then(function (response) {
         setMoviesData(shuffleArray(response.data.results));
