@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { useStateContext } from './HBOProvider';
 
-
 const Account = (props) => {
   const globalState = useStateContext();
   const loopComponent = (comp, loops) => {
@@ -14,7 +13,11 @@ const Account = (props) => {
   };
 
   return (
-    <div className={`account ${globalState.accountNavOpen ? 'account--active' : ''}`}>
+    <div
+      className={`account ${
+        globalState.accountNavOpen ? 'account--active' : ''
+      }`}
+    >
       <div className='account__details'>
         <div className='account__title'>My List</div>
         <div className='account__watch-list'>

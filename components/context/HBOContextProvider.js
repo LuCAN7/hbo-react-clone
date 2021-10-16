@@ -17,7 +17,7 @@ export const HBOProvider = (props) => {
 
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const [accountNavOpen, setAccountNavOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <stateContext.Provider
@@ -30,13 +30,10 @@ export const HBOProvider = (props) => {
         accountNavOpen,
         setAccountNavOpen,
         searchOpen,
-        setSearchOpen
+        setSearchOpen,
       }}
     >
       {props.children}
     </stateContext.Provider>
   );
 };
-
-// Not sure if this has to be export by default? and why not? = Can not be a arrow function
-// export default HBOProvider;

@@ -14,11 +14,43 @@ const MediaRow = (props) => {
     return array;
   }
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/${props.endpoint}&api_key=${process.env.TMDB_API_KEY}`
+      )
+      .then(function (response) {
+        setMoviesData(shuffleArray(response.data.results));
+        setLoadingData(false);
+        // console.log(moviesData);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
   const Thumbnail = (props) => {
+    const thumbSize = (type) => {
+      if (type === 'large-v') {
+        return '400';
+      }
+      if (type === 'small-v') {
+        return '185';
+      }
+      if (type === 'large-h') {
+        return '500';
+      }
+      if (type === 'small-h') {
+        return '342';
+      }
+    };
+
     return (
       <div className='media-row__thumbnail'>
         <img
-          src={`https://image.tmdb.org/t/p/original${props.movie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w${thumbSize(props.type)}/${
+            props.movie.poster_path
+          }`}
           alt=''
         />
         <div className='media-row__top-layer'>
@@ -36,21 +68,6 @@ const MediaRow = (props) => {
     );
   };
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/${props.endpoint}&api_key=${process.env.TMDB_API_KEY}`
-      )
-      .then(function (response) {
-        setMoviesData(shuffleArray(response.data.results));
-        setLoadingData(false);
-        // console.log(moviesData);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
-
   const loopComponent = (comp, digit) => {
     let thumbnails = [];
     for (let i = 0; i < digit; i++) {
@@ -58,21 +75,21 @@ const MediaRow = (props) => {
     }
     return thumbnails;
   };
-  const ShowThumbnails = () => {
+  const ShowThumbnails = (type) => {
     // Simulate loading data from db
     // setTimeout(()=> setLoadingData(false), 2000);
     return loadingData
       ? loopComponent(<Skeleton />, 10)
       : moviesData.map((m) => {
-          return <Thumbnail movie={m} />;
+          console.log(m);
+          return <Thumbnail movie={m} key={m.id} type={type} />;
         });
-    // Use if you dont have data from TMDB api
-    // loopComponent( <Thumbnail/>, 10)
   };
+
   return (
     <div className={`media-row ${props.type}`}>
       <h3 className='media-row__title'>{props.title}</h3>
-      <div className='media-row__thumbnails'>{ShowThumbnails()}</div>
+      <div className='media-row__thumbnails'>{ShowThumbnails(props.type)}</div>
     </div>
   );
 };

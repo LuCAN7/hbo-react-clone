@@ -32,7 +32,7 @@ const Login = () => {
       return users.map((user) => {
         return (
           <div
-            onClick={()=> selectUser(user.id)}
+            onClick={() => selectUser(user.id)}
             className='login-user__user-box'
             key={user.id}
           >
