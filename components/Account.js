@@ -26,6 +26,7 @@ const Account = (props) => {
               <img
                 src='https://image.tmdb.org/t/p/original/pZ4hR5IIoHHfNjot9rq4F96OGAi.jpg'
                 alt='movie cover image'
+                // key={}
               />
               <div className='account__watch-overlay'>
                 <div className='account__watch-buttons'>

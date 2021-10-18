@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel='preload' as='style' href='https://fonts.googleapis.com' />
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link
             rel='preconnect'
             href='https://fonts.gstatic.com'
@@ -21,11 +21,10 @@ class MyDocument extends Document {
             rel='stylesheet'
           />
           <link
-            rel='preload'
-            as='style'
-            href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css'
-            integrity='sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p'
-            crossOrigin='anonymous'
+            href='/fontawesome/css/all.min.css'
+            rel='stylesheet'
+            // as='style'
+            // href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css'
           />
         </Head>
 

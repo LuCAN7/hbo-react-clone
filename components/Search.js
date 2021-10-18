@@ -1,5 +1,5 @@
 // import Image from 'next/image';
-import { useStateContext } from "./HBOProvider";
+import { useStateContext } from './HBOProvider';
 
 const Search = (props) => {
   const globalState = useStateContext();
@@ -12,7 +12,7 @@ const Search = (props) => {
     return thumbnails;
   };
   return (
-    <div className={`search ${globalState.searchOpen ? 'search--active':''}`}>
+    <div className={`search ${globalState.searchOpen ? 'search--active' : ''}`}>
       <div className='search__input-group'>
         <input
           className='search__input'
@@ -22,8 +22,10 @@ const Search = (props) => {
           // Temp fix for error in console....will fix after adding functionality
           readOnly
         />
-        <div className='search__close-btn'
-        onClick={()=>globalState.setSearchOpen(false)}>
+        <div
+          className='search__close-btn'
+          onClick={() => globalState.setSearchOpen(false)}
+        >
           <i className='fas fa-times' />
         </div>
       </div>
@@ -34,6 +36,7 @@ const Search = (props) => {
             <img
               src='https://th.bing.com/th/id/R.9b9da5f8ae4c6940ab3bc765acfe0807?rik=llZEkrs1Kb3%2fQA&riu=http%3a%2f%2fhdqwalls.com%2fdownload%2favengers-endgame-2019-official-new-poster-3p-1280x2120.jpg&ehk=SBvoyTpyoOw2APfbrUupGJzj8PqEjIQzkLwdivBhD14%3d&risl=&pid=ImageRaw&r=0'
               alt=''
+              // key={}
             />
             <div className='search__top-layer'>
               <i className='fas fa-play' />

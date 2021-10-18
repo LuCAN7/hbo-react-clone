@@ -1,11 +1,24 @@
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 const FeaturedMedia = (props) => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const clickedPlay = (e) => {
+    console.log('Go to Movie Page...');
+  };
+
+  const clickedMoreInfo = (e) => {
+    console.log('Go to Movie Page...');
+  };
   return (
     <div className='featured-media'>
       <iframe
         className='featured-media__video'
         width='100%'
         height='100%'
-        src='https://www.youtube.com/embed/NYH2sLid0Zc?autoplay=1&loop=1&start=18'
+        src={props.videoUrl}
         allow='accelerometer; autoplay;clipboard-write;
         encrypted-media; gyroscope; picture-in-picture;'
         allowFullScreen
@@ -13,16 +26,18 @@ const FeaturedMedia = (props) => {
 
       <div className='featured-media__bg'>
         <div className='featured-media__contianer'>
-          <div className='featured-media__title'>Mortal Kombat</div>
-          <div className='featured-media__playing'>NOW PLAYING</div>
-          <div className='featured-media__location'>
-            In theaters and on HBO Max. Straming throughout May 23.
+          <div className='featured-media__title' onClick={clickedMoreInfo}>
+            {props.title}
           </div>
+          <div className='featured-media__playing'>NOW PLAYING</div>
+          <div className='featured-media__location'>{props.location}</div>
           <div className='featured-media__buttons'>
-            <div className='featured-media__play-btn'>
+            <div className='featured-media__play-btn' onClick={clickedPlay}>
               <i className='fas fa-play' />
             </div>
-            <div className='featured-media__info-btn'>MORE INFO</div>
+            <div className='featured-media__info-btn' onClick={clickedMoreInfo}>
+              MORE INFO
+            </div>
           </div>
         </div>
       </div>
