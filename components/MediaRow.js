@@ -1,4 +1,5 @@
 // import Image from 'next/image';
+import Link from 'next/dist/client/link';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -46,6 +47,8 @@ const MediaRow = (props) => {
     };
 
     return (
+      <Link href={`/movie/${props.movie.id}`}>
+      <a>
       <div className='media-row__thumbnail'>
         <img
           src={`https://image.tmdb.org/t/p/w${thumbSize(props.type)}/${
@@ -57,6 +60,8 @@ const MediaRow = (props) => {
           <i className='fas fa-play' />
         </div>
       </div>
+      </a>
+      </Link>
     );
   };
 
@@ -81,8 +86,10 @@ const MediaRow = (props) => {
     return loadingData
       ? loopComponent(<Skeleton />, 10)
       : moviesData.map((m) => {
-          console.log(m);
-          return <Thumbnail movie={m} key={m.id} type={type} />;
+          // console.log(m);
+          return( 
+            <Thumbnail movie={m} key={m.id} type={type} />
+          );
         });
   };
 

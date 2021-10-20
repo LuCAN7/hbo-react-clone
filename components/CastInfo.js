@@ -1,4 +1,7 @@
+import axios from "axios";
+import {useState, useEffect} from 'react'
 const CastInfo = (props) => {
+  
   return (
     <div className='cast-info'>
       {/* CAST & CREW */}

@@ -14,7 +14,16 @@ export default function Home() {
 
   return AuthCheck(
     <Layout>
-      <FeaturedMedia videoUrl='https://www.youtube.com/embed/NYH2sLid0Zc?autoplay=1&loop=1&start=18' title='Mortal Kombat' location="In theaters and on HBO Max. Straming throughout May 23." mediaUrl='/movies/id'/>
+      <FeaturedMedia 
+      // ** Feature Update to **//
+      // mediaUrl= set to the lastViewedMedia value stored in HBOProvider
+      // set based on the last FeaturedMedia component - clickedPlay() value
+      mediaUrl={`https://image.tmdb.org/t/p/original/9yBVqNruk6Ykrwc32qrK2TIE5xw.jpg`}
+      title='Mortal Kombat' 
+      location="In theaters and on HBO Max. Streaming throughout May 23." 
+      overview=''
+      type='front'
+      linkUrl='/movie/460465'/>
       <LazyLoad
         offset={200}
         placeholder={<Placeholders title='Family' type='large-v' />}
