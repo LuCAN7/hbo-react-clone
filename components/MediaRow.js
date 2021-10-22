@@ -54,7 +54,7 @@ const MediaRow = (props) => {
           src={`https://image.tmdb.org/t/p/w${thumbSize(props.type)}/${
             props.movie.poster_path
           }`}
-          alt=''
+          alt='Movie Poster Thumbnail'
         />
         <div className='media-row__top-layer'>
           <i className='fas fa-play' />
