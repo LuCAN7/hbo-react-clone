@@ -5,24 +5,41 @@ const SideNav = (props) => {
   const globalState = useStateContext();
 
   return (
-    <article className={`side-nav ${globalState.sideNavOpen ? 'side-nav--active' : ''}`}>
-      <div className='side-nav__close-btn'
-      onClick={()=>globalState.setSideNavOpen(false)}>
+    <article
+      className={`side-nav ${
+        globalState.sideNavOpen ? 'side-nav--active' : ''
+      }`}
+    >
+      <div
+        className='side-nav__close-btn'
+        onClick={() => globalState.setSideNavOpen(false)}
+      >
         <i className='fas fa-times' />
       </div>
       <ul className='side-nav__main'>
-        <li>
-          <Link href='/' className='active'>
-            Home
+        <li onClick={() => globalState.setSideNavOpen(false)}>
+          <Link href='/'>
+            <a className='side-nav__link--home' href='/'>
+              Home
+            </a>
           </Link>
         </li>
-        <li>
-          <Link href='/'>Series</Link>
+        {/* Display TMDB movie category */}
+        <li onClick={() => globalState.setSideNavOpen(false)}>
+          <Link href='/moive'>
+            <a className='side-nav__link--home'>
+              Movies
+            </a>
+          </Link>
         </li>
-        <li>
-          <Link href='/'>Movies</Link>
+        <li onClick={() => globalState.setSideNavOpen(false)}>
+          <Link href='/tv'>
+            <a className='side-nav__link--home'>
+              Series
+            </a>
+          </Link>
         </li>
-        <li>
+        {/* <li>
           <Link href='/'>Originals</Link>
         </li>
         <li>
@@ -36,11 +53,11 @@ const SideNav = (props) => {
         </li>
         <li>
           <Link href='/'>Trending Now</Link>
-        </li>
+        </li> */}
       </ul>
       <div className='side-nav__divider' />
       <ul className='side-nav__main'>
-        <li>
+        {/* <li>
           <Link href='/'>Action</Link>
         </li>
         <li>
@@ -87,7 +104,7 @@ const SideNav = (props) => {
         </li>
         <li>
           <Link href='/'>Sports</Link>
-        </li>
+        </li> */}
       </ul>
     </article>
   );

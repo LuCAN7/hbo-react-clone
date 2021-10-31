@@ -9,18 +9,18 @@ import Placeholders from '../../components/Placeholders';
 import AuthCheck from '../../components/AuthCheck';
 
 export default function SingleMediaPage(props) {
-  const [movie, setMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [movie, setMovie] = useState([]);
   
   
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${props.query.id}?api_key=${process.env.TMDB_API_KEY}`
       )
       .then(function (response) {
         setMovie(response.data);
-        
         setIsLoading(false);
       })
       .catch(function (error) {
@@ -31,11 +31,13 @@ export default function SingleMediaPage(props) {
   return AuthCheck(
     <Layout>
       <FeaturedMedia
-        mediaUrl={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-        title={movie.title}
+        title={props.query.mediaType === 'movie'? props.mediaData.title :
+      props.mediaData.name}
+        mediaUrl={`https://image.tmdb.org/t/p/original${props.mediaData.backdrop_path}`}
         location='In theaters and on HBO Max. Streaming throughout May 23.'
-        overview={movie.overview}
-        linkUrl={`/movie/${movie.id}`}
+        overview={props.mediaData.overview}
+        linkUrl={`/${props.query.mediaType === 'movie'? 'movie' :
+        'tv'}/${props.mediaData.id}`}
         type='single'
       />
       <LazyLoad
@@ -45,7 +47,8 @@ export default function SingleMediaPage(props) {
         <MediaRow
           title='Similar To This'
           type='small-v'
-          endpoint={`movie/${props.query.id}/similar?`}
+          mediaType={props.query.mediaType}
+          endpoint={`${props.query.mediaType === 'movie' ? 'movie' : 'tv'}/${props.query.id}/similar?`}
           // endpoint={`https://api.themoviedb.org/3/${props.endpoint}&api_key=${process.env.TMDB_API_KEY}`}
         />
       </LazyLoad>
@@ -58,5 +61,22 @@ export default function SingleMediaPage(props) {
 // This gets called on every request
 export async function getServerSideProps(context) {
   // console.log('getServerSideProps ---->', context.query);
-  return { props: { query: context.query } };
+  let mediaData;
+  try {
+    mediaData = await axios.get(
+        `https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}?api_key=${process.env.TMDB_API_KEY}`
+      )
+      // .then(function (response) {
+      //   setMovie(response.data);
+      //   setIsLoading(false);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+  } catch(error){
+    console.log(error);
+  }
+
+
+  return { props: { mediaData: mediaData.data, query: context.query } };
 }

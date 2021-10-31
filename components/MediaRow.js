@@ -16,6 +16,7 @@ const MediaRow = (props) => {
   }
 
   useEffect(() => {
+    setLoadingData(true);
     axios
       .get(
         `https://api.themoviedb.org/3/${props.endpoint}&api_key=${process.env.TMDB_API_KEY}`
@@ -47,20 +48,24 @@ const MediaRow = (props) => {
     };
 
     return (
-      <Link href={`/movie/${props.movie.id}`}>
-      <a>
-      <div className='media-row__thumbnail'>
-        <img
-          src={`https://image.tmdb.org/t/p/w${thumbSize(props.type)}/${
-            props.movie.poster_path
-          }`}
-          alt='Movie Poster Thumbnail'
-        />
-        <div className='media-row__top-layer'>
-          <i className='fas fa-play' />
-        </div>
-      </div>
-      </a>
+      <Link
+        href={`/${props.mediaType === 'movie' ? 'movie' : 'tv'}/${
+          props.movie.id
+        }`}
+      >
+        <a>
+          <div className='media-row__thumbnail'>
+            <img
+              src={`https://image.tmdb.org/t/p/w${thumbSize(props.type)}/${
+                props.movie.poster_path
+              }`}
+              alt='Movie Poster Thumbnail'
+            />
+            <div className='media-row__top-layer'>
+              <i className='fas fa-play' />
+            </div>
+          </div>
+        </a>
       </Link>
     );
   };
@@ -87,9 +92,7 @@ const MediaRow = (props) => {
       ? loopComponent(<Skeleton />, 10)
       : moviesData.map((m) => {
           // console.log(m);
-          return( 
-            <Thumbnail movie={m} key={m.id} type={type} />
-          );
+          return <Thumbnail movie={m} key={m.id} type={type} mediaType={props.mediaType}/>;
         });
   };
 
@@ -100,5 +103,9 @@ const MediaRow = (props) => {
     </div>
   );
 };
+
+MediaRow.defaultProps = {
+  mediaType: 'movie'
+}
 
 export default MediaRow;

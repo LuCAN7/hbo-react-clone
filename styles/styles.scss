@@ -10,6 +10,7 @@
 @use 'account';
 @use 'search';
 @use 'media-row';
+@use 'genre-nav';
 
 
 * {
@@ -18,7 +19,12 @@
 
 .main-layout {
   background: linear-gradient(135deg, rgb(31, 31, 44) 65%, rgba(19,50,150,2) 100%);
+  // max-width: 100vw;
   min-height: 100vh;
+}
+.contain-contianer {
+  max-width: 1440px;
+  max-height: 100%;
 }
 
 h1 {

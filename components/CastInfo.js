@@ -10,6 +10,7 @@ const CastInfo = (props) => {
   // const { id } = router.query;
   // console.log(movie);
   useEffect(() => {
+    setLoadingData(true);
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${props.mediaId}/credits?api_key=${process.env.TMDB_API_KEY}`
@@ -23,7 +24,7 @@ const CastInfo = (props) => {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [props.mediaId]);
 
 const showCast = () => {
   // console.log('showCast Credits--> ',credits);
