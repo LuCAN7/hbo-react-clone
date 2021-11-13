@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-
+import ls from 'local-storage';
 export const stateContext = React.createContext();
 
 export function useStateContext() {
@@ -18,6 +18,27 @@ export const HBOProvider = (props) => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
   const [accountNavOpen, setAccountNavOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false)
+  const [watchList, setWatchList ] = useState(ls.get('myList'))
+  
+  const addToWatchList = (video) => {
+    let myList;
+    if(ls('myList') !== null){
+      myList = ls.get('myList');
+      myList.push(video)
+      ls.set('myList', myList);
+      setWatchList(myList)
+    }else {
+      ls.set('myList', [video]);
+    }
+  }
+
+  const removeFromWatchList = (videoId) => {
+    let myList = ls.get('myList');
+    myList = myList.filter((m)=> m.id !== videoId)
+    ls.set('myList', myList)
+    setWatchList(myList)
+
+  }
 
   const thumbTypes = ['large-v', 'small-v', 'large-h', 'small-h'];
 
@@ -33,7 +54,11 @@ export const HBOProvider = (props) => {
         setAccountNavOpen,
         searchOpen,
         setSearchOpen,
-        thumbTypes
+        thumbTypes,
+        addToWatchList,
+        removeFromWatchList,
+        watchList,
+        setWatchList
       }}
     >
       {props.children}

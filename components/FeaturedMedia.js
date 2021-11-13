@@ -1,9 +1,13 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useStateContext } from './HBOProvider';
+import { useContext } from 'react';
 
 const FeaturedMedia = (props) => {
   const router = useRouter();
   const { id } = router.query;
+
+  const globalStateContext = useStateContext()
 
   const clickedPlay = () => {
     router.push(props.linkUrl);
@@ -14,9 +18,9 @@ const FeaturedMedia = (props) => {
     console.log('Go to Movie Page...');
   };
 
+  const clickedAdd = (props) => {
+    globalStateContext.addToWatchList(props.mediaUrl)
 
-  const clickedAdd = (e) => {
-    console.log('Clicked to Add Movie!!!');
   };
 
   const showMedia = ()=> {
@@ -61,7 +65,7 @@ const FeaturedMedia = (props) => {
             <div className='featured-media__play-btn' onClick={clickedPlay}>
               <i className='fas fa-play' />
             </div>
-            <div className='featured-media__add-btn' onClick={clickedAdd}>
+            <div className='featured-media__add-btn' onClick={()=> clickedAdd(props)}>
               <i className='fas fa-plus' />
             </div>
             <div className='featured-media__info-btn' onClick={clickedMoreInfo}>

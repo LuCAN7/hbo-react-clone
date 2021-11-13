@@ -5,7 +5,7 @@ import Search from './Search';
 import { useStateContext } from './HBOProvider';
 import ls from 'local-storage';
 
-const Header = (props) => {
+const Header = () => {
   const globalState = useStateContext();
   // let user = ls('users', user);
   return (
@@ -20,8 +20,8 @@ const Header = (props) => {
         <div
           className='top-header__menu-btn'
           onClick={() => {
-            globalState.setSideNavOpen(true);
-            // globalState.setMenuOpen(true);
+            globalState.setSideNavOpen(!globalState.sideNavOpen);
+            // globalState.setNavOpen(true);
           }}
         >
           <i className='fas fa-bars' />

@@ -40,6 +40,9 @@ export default function SingleMediaPage(props) {
         linkUrl={`/${props.query.mediaType === 'movie'? 'movie' :
         'tv'}/${props.mediaData.id}`}
         type='front'
+        mediaType={props.query.mediaType}
+        mediaId={props.query.id}
+
       />
       <LazyLoad
         offset={-200}

@@ -47,7 +47,9 @@ export default function genreTypePage(props) {
         linkUrl={`${props.query.mediaType}/${props.featureData.id}`}
         location='In theaters and on HBO Max. Streaming from now throughout May 23.'
         overview=''
-        type='single'       
+        type='single'   
+        mediaType={props.query.mediaType}
+        mediaId={props.featureData.id}    
       />
       <GenreNav mediaType={props.query.mediaType} genresData={props.genresData}/> 
       {showThumbTypes()}
