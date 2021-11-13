@@ -7,13 +7,6 @@ const MediaRow = (props) => {
   const [loadingData, setLoadingData] = useState(true);
   const [moviesData, setMoviesData] = useState([]);
 
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
 
   useEffect(() => {
     setLoadingData(true);
@@ -29,7 +22,7 @@ const MediaRow = (props) => {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [props.updateData]);
 
   const Thumbnail = (props) => {
     const thumbSize = (type) => {
@@ -79,17 +72,24 @@ const MediaRow = (props) => {
   };
 
   const loopComponent = (comp, digit) => {
-    let thumbnails = [];
-    for (let i = 0; i < digit; i++) {
-      thumbnails.push(comp);
-    }
+    let thumbnails = [<Skeleton key={'a'}/>,
+    <Skeleton key={'b'}/>,
+      <Skeleton key={'c'}/>,
+      <Skeleton key={'d'}/>,
+      <Skeleton key={'f'}/>,
+      <Skeleton key={'g'}/>,
+      <Skeleton key={'h'}/>];
+    // for (let i = 0; i < digit; i++) {
+    //   thumbnails.push(comp);
+    // }
     return thumbnails;
   };
   const ShowThumbnails = (type) => {
     // Simulate loading data from db
     // setTimeout(()=> setLoadingData(false), 2000);
     return loadingData
-      ? loopComponent(<Skeleton />, 10)
+      ? loopComponent(
+        <Skeleton />, 10)
       : moviesData.map((m) => {
           // console.log(m);
           return <Thumbnail movie={m} key={m.id} type={type} mediaType={props.mediaType}/>;
@@ -103,7 +103,13 @@ const MediaRow = (props) => {
     </div>
   );
 };
-
+export function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 MediaRow.defaultProps = {
   mediaType: 'movie'
 }

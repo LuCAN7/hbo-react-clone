@@ -1,30 +1,28 @@
 import Link from 'next/link';
 import { useState } from 'react';
-// import { useStateContext } from './HBOProvider';
 
 const GenreNav = (props) => {
-  // const globalState = useStateContext();
   const [activeNav, setActiveNav] = useState(false);
-  setTimeout(()=>{setActiveNav(true)}, 300)
+  // console.log("GENRE-NAV", props)
+  setTimeout(()=>{setActiveNav(true)}, 200)
   return (
     <ul className={`genre-nav ${activeNav ? 'genre-nav--active' : ''}`}>
-      <li>
-        <Link href='/'>
-          <a href='/'>Home</a>
-        </Link>
-      </li>
-      <li>
-        <Link href='/'>
-          <a href='/'>Home</a>
-        </Link>
-      </li>
-      <li>
-        <Link href='/'>
-          <a href='/'>Home</a>
-        </Link>
-      </li>
+      <GenreList genresData={props.genresData} mediaType={props.mediaType}/>
+      
     </ul>
   );
 };
 
+const GenreList = (props)=> {
+  // console.log("GENRE-LIST", props)
+  return props.genresData.map((item)=> {
+    return (
+      <li key={item.id}>
+      <a href={`/${props.mediaType}/genre/${item.id}`}>
+        {item.name}
+        </a>
+    </li>
+    )
+  });
+}
 export default GenreNav;

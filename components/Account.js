@@ -1,16 +1,18 @@
 // import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { useStateContext } from './HBOProvider';
 
 const Account = (props) => {
   const globalState = useStateContext();
-  const loopComponent = (comp, loops) => {
-    const mylistViewed = [];
-    for (let i = 0; i < loops; i++) {
-      mylistViewed.push(comp);
+
+  useEffect(() => {
+    if (globalState.accountNavOpen) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
     }
-    return mylistViewed;
-  };
+  }, [globalState.accountNavOpen]);
 
   return (
     <div
@@ -21,26 +23,22 @@ const Account = (props) => {
       <div className='account__details'>
         <div className='account__title'>My List</div>
         <div className='account__watch-list'>
-          {loopComponent(
-            <div className='account__watch-video'>
-              <img
-                src='https://image.tmdb.org/t/p/original/pZ4hR5IIoHHfNjot9rq4F96OGAi.jpg'
-                alt='movie cover image'
-                // key={}
-              />
-              <div className='account__watch-overlay'>
-                <div className='account__watch-buttons'>
-                  <div className='account__watch-circle'>
-                    <i className='fas fa-play' />
-                  </div>
-                  <div className='account__watch-circle'>
-                    <i className='fas fa-times' />
-                  </div>
+          <div className='account__watch-video'>
+            <img
+              src='https://image.tmdb.org/t/p/original/pZ4hR5IIoHHfNjot9rq4F96OGAi.jpg'
+              alt='movie cover image'
+            />
+            <div className='account__watch-overlay'>
+              <div className='account__watch-buttons'>
+                <div className='account__watch-circle'>
+                  <i className='fas fa-play' />
+                </div>
+                <div className='account__watch-circle'>
+                  <i className='fas fa-times' />
                 </div>
               </div>
-            </div>,
-            6 // The amount of viewed components passed in as an argument
-          )}
+            </div>
+          </div>
         </div>
       </div>
       <div className='account__watch-menu'>

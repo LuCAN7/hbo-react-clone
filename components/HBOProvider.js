@@ -19,6 +19,8 @@ export const HBOProvider = (props) => {
   const [accountNavOpen, setAccountNavOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false)
 
+  const thumbTypes = ['large-v', 'small-v', 'large-h', 'small-h'];
+
   return (
     <stateContext.Provider
       value={{
@@ -30,7 +32,8 @@ export const HBOProvider = (props) => {
         accountNavOpen,
         setAccountNavOpen,
         searchOpen,
-        setSearchOpen
+        setSearchOpen,
+        thumbTypes
       }}
     >
       {props.children}

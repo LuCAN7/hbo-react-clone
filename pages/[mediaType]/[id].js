@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import LazyLoad from 'react-lazyload';
 import axios from 'axios';
+
 import Layout from '../../components/Layout';
 import FeaturedMedia from '../../components/FeaturedMedia';
 import MediaRow from '../../components/MediaRow';
@@ -38,7 +39,7 @@ export default function SingleMediaPage(props) {
         overview={props.mediaData.overview}
         linkUrl={`/${props.query.mediaType === 'movie'? 'movie' :
         'tv'}/${props.mediaData.id}`}
-        type='single'
+        type='front'
       />
       <LazyLoad
         offset={-200}
@@ -53,7 +54,7 @@ export default function SingleMediaPage(props) {
         />
       </LazyLoad>
 
-      <CastInfo mediaId={props.query.id}/>
+      <CastInfo mediaType={props.query.mediaType} mediaId={props.query.id}/>
     </Layout>
   );
 }
@@ -61,18 +62,11 @@ export default function SingleMediaPage(props) {
 // This gets called on every request
 export async function getServerSideProps(context) {
   // console.log('getServerSideProps ---->', context.query);
-  let mediaData;
+  let mediaData; 
   try {
     mediaData = await axios.get(
         `https://api.themoviedb.org/3/${context.query.mediaType}/${context.query.id}?api_key=${process.env.TMDB_API_KEY}`
       )
-      // .then(function (response) {
-      //   setMovie(response.data);
-      //   setIsLoading(false);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
   } catch(error){
     console.log(error);
   }

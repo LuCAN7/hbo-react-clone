@@ -6,12 +6,21 @@
   height: 80px;
   padding: 70px 50px 50px 50px;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  min-width: 100%;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   li {
     transition: all 0.3s ease-in-out;
     opacity: 0;
     transform: translate3d(0, 50px, 0);
   }
+
+  // width: calc(100vw - 70px);
+
   @for $i from 0 to 20 {
     &--active li:nth-child(#{$i + 1}) {
       opacity: 1;
