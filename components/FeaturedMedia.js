@@ -7,7 +7,7 @@ const FeaturedMedia = (props) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const globalStateContext = useStateContext()
+  const globalState = useStateContext();
 
   const clickedPlay = () => {
     router.push(props.linkUrl);
@@ -18,8 +18,9 @@ const FeaturedMedia = (props) => {
     console.log('Go to Movie Page...');
   };
 
-  const clickedAdd = (props) => {
-    globalStateContext.addToWatchList(props.mediaUrl)
+  const clickedAdd = (video) => {
+    globalState.addToWatchList(video)
+    console.log(props.mediaUrl);
 
   };
 

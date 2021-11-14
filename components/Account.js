@@ -18,19 +18,24 @@ const Account = () => {
     return globalState.watchList.map((item, index) => {
       return (
         <div className='account__watch-video' key={index}>
-          <img src={item} alt='movie cover image' />
+          <img src={item.mediaUrl} alt='movie cover image' />
           <div className='account__watch-overlay'>
             <div className='account__watch-buttons'>
-              <div className='account__watch-circle'  onClick={() => {
-            globalState.setAccountNavOpen(!globalState.accountNavOpen);
-
-          }}>
+              <div
+                className='account__watch-circle'
+                onClick={() => {
+                  globalState.setAccountNavOpen(!globalState.accountNavOpen);
+                }}
+              >
                 <i className='fas fa-play' />
               </div>
-              <div className='account__watch-circle'  onClick={() => {
-            globalState.setAccountNavOpen(!globalState.accountNavOpen);
-  
-          }}>
+              <div
+                className='account__watch-circle'
+                onClick={() => {
+                  globalState.removeFromWatchList(item.mediaId)
+                  globalState.setAccountNavOpen(!globalState.accountNavOpen);
+                }}
+              >
                 <i className='fas fa-times' />
               </div>
             </div>
@@ -48,7 +53,9 @@ const Account = () => {
     >
       <div className='account__details'>
         <div className='account__title'>My List</div>
-        <div className='account__watch-list'>{globalState.watchList !== null ? showWatchList() : ''}</div>
+        <div className='account__watch-list'>
+          {globalState.watchList !== null ? showWatchList() : ''}
+        </div>
       </div>
       <div className='account__watch-menu'>
         <ul className='account__main'>

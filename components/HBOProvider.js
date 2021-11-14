@@ -33,8 +33,13 @@ export const HBOProvider = (props) => {
   }
 
   const removeFromWatchList = (videoId) => {
+    console.log("VIEOSOSOS")
+    console.log(videoId)
+
     let myList = ls.get('myList');
-    myList = myList.filter((m)=> m.id !== videoId)
+    console.log(myList)
+    myList = myList.filter((m)=> m.mediaId !== videoId)
+
     ls.set('myList', myList)
     setWatchList(myList)
 
